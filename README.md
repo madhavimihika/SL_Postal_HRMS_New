@@ -6,13 +6,18 @@ This system digitizes and automates the manual, paper-based HR processes current
 
 ## 🚀 Key Features
 
-*   **Role-Based Access Control (RBAC):** Distinct dashboards and permissions for Superintendents, Accountants, and Employees/Postal Assistants.
+*   **Role-Based Access Control (RBAC):** Distinct dashboards and permissions for Superintendents, Assistant Registration Officers, Accountants, and Employees/Postal Assistants.
 *   **Secure Authentication:** Login and Signup using NIC as the username, with SHA-256 password hashing. Includes a "Change Password" feature.
-*   **Employee Management (CRUD):** 
-    *   *Superintendent* can add new employees, view all staff, and delete resigned/retired employees.
-    *   *Everyone* can view their own profile.
+*   **Employee Management (Full CRUD):** 
+    *   *Registration Officers* can add new employees, view all staff, update their details, and delete resigned/retired employees.
+    *   **Export to Excel/CSV:** Export the entire employee database to a spreadsheet with one click.
+    *   **Probation Tracking:** Set probation end dates, receive automated login reminders for upcoming probation completions (within 14 days), and convert employees to permanent status.
+*   **Department Transfer Workflow:** 
+    *   *Employees* can submit a transfer request to another department with a reason.
+    *   *Employees* can track the real-time status of their request (Processing, Approved, Rejected).
+    *   *Registration Officers* can view pending requests and Approve/Reject them. Approving a request automatically updates the employee's department in the system.
 *   **Leave Management:** 
-    *   *Employees* can apply for leave and track the status (Pending, Approved, Rejected) in real-time.
+    *   *Employees* can apply for leave and track the status in real-time.
     *   *Superintendent* can approve or reject pending leave requests.
 *   **Attendance Management:** Employees can digitally Clock In and Clock Out, and view their attendance history.
 *   **Salary Management:** 
@@ -33,8 +38,8 @@ This system digitizes and automates the manual, paper-based HR processes current
 
 ### 1. Database Setup
 1. Open **phpMyAdmin** (or your MySQL client).
-2. Create a new database named `postal_hrms_db`.
-3. Import the `postal_hrms_db.sql` file (located in the root of this repository) into the database to create the tables and sample data.
+2. Create a new database named `sl_postal_hrms` (or `postal_hrms_db`).
+3. Import the `sl_postal_hrms.sql` file (located in the root of this repository) into the database to create the tables and sample data.
 
 ### 2. Project Setup
 1. Clone this repository to your local machine.
@@ -42,4 +47,4 @@ This system digitizes and automates the manual, paper-based HR processes current
 3. Ensure the **`MySql.Data`** NuGet package is installed (Right-click Solution -> Manage NuGet Packages -> Search for `MySql.Data` -> Install).
 4. Open **`DbConnection.cs`** and update the connection string to match your local MySQL setup:
    ```csharp
-   private static string connectionString = "Server=localhost;Database=postal_hrms_db;Uid=root;Pwd=YOUR_PASSWORD_HERE;";
+   private static string connectionString = "Server=localhost;Database=sl_postal_hrms;Uid=root;Pwd=YOUR_PASSWORD_HERE;";
